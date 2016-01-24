@@ -117,17 +117,15 @@ void rpdThread::performTask(const QString &signal) {
                 // Example: /sys/kernel/debug/dri/0/radeon_pm_info -> /tmp/radeon_pm_info
                 qDebug() << clocksDataPath << " will be copied into " << destination;
 
-                // We will use QFile::copy() to copy the file
-                // QFile::copy() can't overwrite files, if the destination path exists we must delete it
-                if(QFile(destination).exists() && ! QFile::remove(destination))
-                    // The removing process has failed
-                    // The copying process will probably fail, but we will try anyway
-                    qCritical() << "Failed removing " << destination;
+                /* For some reason this doesn't work... We'll use a system call instead
+                if(QFile::exists(destination) && ! QFile::remove(destination)) // QFile::copy() can't overwrite files, if the destination path exists we must delete it
+                    qCritical() << "Failed removing " << destination; // The removing process has failed
 
-                if( ! QFile::copy(clocksDataPath,destination))
-                    // The copying process has failed
-                    qCritical() << "Failed copying " << clocksDataPath;
+                if( ! QFile::copy(clocksDataPath, destination))
+                        qCritical() << "Failed copying " << clocksDataPath; // The copying process has failed
+                */
 
+                system("cp " + clocksDataPath.toLocal8Bit() + " /tmp/");
                 break;
             }
 
