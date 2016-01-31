@@ -1,0 +1,8 @@
+Format: 1.0
+Upstream-Name: radeon-profile-daemon
+Source: https://github.com/marazmista/radeon-profile-daemon
+License: GPL-2+
+
+Files: *
+Copyright: 2013 Marazmista, Danysan
+License: GPL-2+

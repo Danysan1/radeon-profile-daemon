@@ -1,0 +1,14 @@
+Source: radeon-profile-daemon
+Maintainer: marazmista <marazmista@gmail.com>
+Uploaders: danysan <danysan95@gmail.com>
+Section: utils
+Priority: optional
+Build-Depends: debhelper, qtbase5-dev, qt5-default, make, libxrandr-dev
+Homepage: https://github.com/marazmista/radeon-profile-daemon
+Vcs-git: https://github.com/marazmista/radeon-profile-daemon.git
+
+Package: radeon-profile-daemon
+Architecture: any
+Depends: qt5-default, radeon-profile, xserver-xorg-video-ati, ${misc:Depends}, ${shlibs:Depends}
+Suggests: lm-sensors, driconf, sudo
+Description: System daemon for reading info about GPU clocks and volts and pass this data to radeon-profile so the GUI application can be run as normal user.
