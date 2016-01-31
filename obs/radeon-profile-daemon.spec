@@ -20,6 +20,8 @@ Requires: qt5-qtbase
 BuildRequires: make
 BuildRequires: gcc-c++
 
+Requires: radeon-profile
+
 %description
 System daemon for reading info about GPU clocks and volts and pass this data to radeon-profile so the GUI application can be run as normal user.
 

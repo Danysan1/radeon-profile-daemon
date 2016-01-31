@@ -3,7 +3,7 @@ Maintainer: marazmista <marazmista@gmail.com>
 Uploaders: danysan <danysan95@gmail.com>
 Section: utils
 Priority: optional
-Build-Depends: debhelper, qtbase5-dev, qt5-default, make, libxrandr-dev
+Build-Depends: debhelper, qtbase5-dev, qt5-default, make
 Homepage: https://github.com/marazmista/radeon-profile-daemon
 Vcs-git: https://github.com/marazmista/radeon-profile-daemon.git
 
