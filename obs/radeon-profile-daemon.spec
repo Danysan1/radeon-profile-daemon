@@ -38,7 +38,7 @@ make
 
 %install
 install -Dm755 "build/radeon-profile-daemon" "%{buildroot}%{_bindir}/radeon-profile-daemon"
-install -Dm644 "radeon-profile-daemon/extra/radeon-profile-daemon.service" "%{buildroot}%{_libdir}/systemd/system/radeon-profile-daemon.service"
+install -Dm644 "radeon-profile-daemon/extra/radeon-profile-daemon.service" "%{buildroot}%{_unitdir}/radeon-profile-daemon.service"
 
 %post -p /sbin/ldconfig  
    
@@ -46,7 +46,7 @@ install -Dm644 "radeon-profile-daemon/extra/radeon-profile-daemon.service" "%{bu
 
 %files
 %{_bindir}/radeon-profile-daemon
-%{_libdir}/systemd/system/radeon-profile-daemon.service
+%{_unitdir}/radeon-profile-daemon.service
 
 %changelog
 * Fri Jan 29 2016 danysan95@gmail.com
