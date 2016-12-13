@@ -21,6 +21,7 @@
 	<service name="extract_file">
     		<param name="archive">*.tar</param>
     		<param name="files">*/obs/debian.changelog
+			*/obs/debian.compat
               		*/obs/debian.control
               		*/obs/debian.copyright
               		*/obs/debian.rules
