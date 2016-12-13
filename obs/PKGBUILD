@@ -2,29 +2,29 @@
 
 pkgname=radeon-profile-daemon
 pkgver=1
-pkgrel=$(uname --machine)
-pkgdesc="Systemd service for radeon-profile"
+pkgrel=1
+pkgdesc="System daemon for radeon-profile"
 url="http://github.com/marazmista/radeon-profile-daemon"
 arch=('i686' 'x86_64')
 license=('GPL2')
-makedepends=('qt5-base' 'qtchooser' 'make')
-depends=('qt5-base' 'xf86-video-ati' 'radeon-profile')
+depends=('qt5-base' 'radeon-profile')
+optdepends=('xf86-video-ati' 'xf86-video-amdgpu')
 provides=('radeon-profile-daemon')
-replaces=('radeon-profile-daemon')
-conflicts=('radeon-profile-daemon')
-source=(radeon-profile-daemon-${pkgver}.tar.gz)
+replaces=('radeon-profile-daemon-git')
+source=(radeon-profile-daemon-$pkgver.tar.gz)
 sha256sums=('SKIP')
  
 build() {
 	mkdir -p build
 	cd build
-	qmake ../radeon-profile-daemon-$pkgver/radeon-profile-daemon/
+	qmake "$srcdir/radeon-profile-daemon-$pkgver/radeon-profile-daemon/radeon-profile-daemon.pro"
 	make
 }
  
 package() {
 	cd build/
 	make prefix="${pkgdir}" install
-	install -Dm755 "$srcdir/build/radeon-profile-daemon" "$pkgdir/usr/bin/radeon-profile-daemon"
-	install -Dm644 "$srcdir/radeon-profile-daemon-$pkgver/radeon-profile-daemon/extra/radeon-profile-daemon.service" "$pkgdir/usr/lib/systemd/system/radeon-profile-daemon.service"
+	install -Dm644 "$srcdir/build/radeon-profile-daemon" "$pkgdir/usr/bin/radeon-profile-daemon"
+	chmod +x "$pkgdir/usr/bin/radeon-profile-daemon"
+	install -Dm644 "$srcdir/radeon-profile-daemon-$pkgver/radeon-profile-daemon/extra/radeon-profile-daemon.service" "$pkgdir/etc/systemd/system/radeon-profile-daemon.service"
 }
