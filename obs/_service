@@ -1,7 +1,7 @@
 <services>
-  	<!-- Service file that links the OBS package to the git repo --> 
-  	<!-- The git copy of this file is ignored by the Open Build Service.
-  	 Hence, whenever this file is edited it must be copied to the OBS in order to work -->
+	<!-- Service file that links the OBS package to the git repo --> 
+	<!-- The git copy of this file is ignored by the Open Build Service.
+	 Hence, whenever this file is edited it must be copied to the OBS in order to work -->
   
 	<!-- Some useful links
 		https://en.opensuse.org/openSUSE:Build_Service_private_instance_software_live_cycle#Step_by_step 
@@ -14,20 +14,20 @@
 		<param name="scm">git</param>
 		<param name="url">https://github.com/marazmista/radeon-profile-daemon.git</param>
 		<param name="versionformat">@PARENT_TAG@</param> <!-- the package version (uses the git tag) -->
-		<param name="revision">20161003</param> <!-- Git branch/tag to use -->
+		<param name="revision">20161218</param> <!-- Git branch/tag to use -->
 	</service>
 
 	<!-- Extract build scripts -->
 	<service name="extract_file">
-    		<param name="archive">*.tar</param>
-    		<param name="files">*/obs/debian.changelog
+		<param name="archive">*.tar</param>
+		<param name="files">*/obs/debian.changelog
 			*/obs/debian.compat
-              		*/obs/debian.control
-              		*/obs/debian.copyright
-              		*/obs/debian.rules
-              		*/obs/PKGBUILD
-              		*/obs/radeon-profile-daemon.dsc
-              		*/obs/radeon-profile-daemon.spec</param>
+			*/obs/debian.control
+			*/obs/debian.copyright
+			*/obs/debian.rules
+			*/obs/PKGBUILD
+			*/obs/radeon-profile-daemon.dsc
+			*/obs/radeon-profile-daemon.spec</param>
 	</service>
 
 	<!-- Debian packaging system wants a .tar.gz source file ¯\_(ツ)_/¯ -->

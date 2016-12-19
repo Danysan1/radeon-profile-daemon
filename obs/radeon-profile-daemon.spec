@@ -52,17 +52,20 @@ cd radeon-profile-daemon
 install -Dm755 "radeon-profile-daemon" "%{buildroot}%{_bindir}/radeon-profile-daemon"
 install -Dm644 "extra/radeon-profile-daemon.service" "%{buildroot}%{_unitdir}/radeon-profile-daemon.service"
 
-%pre
-%service_add_pre radeon-profile-daemon.service
+# https://en.opensuse.org/openSUSE:Systemd_packaging_guidelines#Register_systemd_unit_files_in_install_scripts
+# These macros seem to be creating problems to Fedora installation
 
-%post
-%service_add_post radeon-profile-daemon.service
+#%pre
+#%service_add_pre radeon-profile-daemon.service
 
-%preun
-%service_del_preun radeon-profile-daemon.service
+#%post
+#%service_add_post radeon-profile-daemon.service
 
-%postun
-%service_del_postun radeon-profile-daemon.service
+#%preun
+#%service_del_preun radeon-profile-daemon.service
+
+#%postun
+#%service_del_postun radeon-profile-daemon.service
 
 %files
 %{_bindir}/radeon-profile-daemon
